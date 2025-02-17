@@ -9,13 +9,13 @@ fi
 BUILDDIR="$ROOTDIR/build"
 
 cd "$BUILDDIR/openwrt"
-OPENWRT_BRANCH=23.05
+OPENWRT_BRANCH=24.10
 
 # -------------- UBOOT -----------------------------------
 # replace uboot with local uboot package
 # this version does not need arm-trusted-firmware-rk3328
-rm -rf package/boot/uboot-rockchip
-cp -R $ROOTDIR/openwrt-$OPENWRT_BRANCH/patches/package/uboot-rockchip package/boot/
+# rm -rf package/boot/uboot-rockchip
+# cp -R $ROOTDIR/openwrt-$OPENWRT_BRANCH/patches/package/uboot-rockchip package/boot/
 
 # -------------- target linux/rockchip ----------------
 # replace target rockchip with original one
@@ -35,7 +35,7 @@ cp $ROOTDIR/openwrt-$OPENWRT_BRANCH/patches/package/mbedtls/patches/200-Implemen
    package/libs/mbedtls/patches/
 
 # enable motorcomm for R2C
-echo "CONFIG_MOTORCOMM_PHY=y" >> target/linux/rockchip/armv8/config-5.15
+echo "CONFIG_MOTORCOMM_PHY=y" >> target/linux/rockchip/armv8/config-6.6
 
 # add caiaq usb sound module for shairport with old soundcard
 ADDON_PATH='snd-usb-caiaq.makefileaddon'
@@ -49,9 +49,9 @@ else
 fi
 
 # revert to fresh config
-cp $BUILDDIR/openwrt-fresh-$OPENWRT_BRANCH/target/linux/generic/config-5.15 target/linux/generic/config-5.15
+cp $BUILDDIR/openwrt-fresh-$OPENWRT_BRANCH/target/linux/generic/config-6.6 target/linux/generic/config-6.6
 
-cat << "EOF" >> target/linux/generic/config-5.15
+cat << "EOF" >> target/linux/generic/config-6.6
 # CONFIG_BLK_DEV_SX8 is not set
 EOF
 

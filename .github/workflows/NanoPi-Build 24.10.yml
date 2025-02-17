@@ -2,7 +2,7 @@
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
 
-name: NanoPi Build
+name: NanoPi Build 24.10
 
 on:
 #  release:
@@ -24,34 +24,36 @@ on:
       openwrt_branch:
         description: 'OpenWrt Branch to build'     
         required: true
-        default: '22.03'
+        default: '24.10'
         type: choice
         options:
-        - '22.03'
-        - '23.05'
+        #- '22.03'
+        #- '23.05'
+        - '24.10'
       model_R4S:
         description: 'Build R4S'
         type: boolean
         default: true
-      model_R2S:
-        description: 'Build R2S'
-        type: boolean
-        default: true
-      model_R2C:
-        description: 'Build R2C'
-        type: boolean
-        default: false
-      build_mini:
-        description: 'Build mini seed'
-        type: boolean
-        default: false
+      #model_R2S:
+      #  description: 'Build R2S'
+      #  type: boolean
+      #  default: false
+      #model_R2C:
+      #  description: 'Build R2C'
+      #  type: boolean
+      #  default: false
+      #build_mini:
+      #  description: 'Build mini seed'
+      #  type: boolean
+      #  default: false
       build_full:
         description: 'Build full seed'
         type: boolean
         default: true
 jobs:
   init:
-    runs-on: ubuntu-22.04
+    #runs-on: ubuntu-22.04
+    runs-on: self-hosted
     if: github.event.repository.owner.id == github.event.sender.id
 
     # Map a step output to a job output
@@ -79,7 +81,8 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.init.outputs.matrix) }}
     
-    runs-on: ubuntu-22.04
+    #runs-on: ubuntu-22.04
+    runs-on: self-hosted
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
@@ -87,14 +90,16 @@ jobs:
       uses: actions/checkout@main
     
     - name: Free space
+      if: runner.environment == 'github-hosted' # for GitHub hosted runners and 'self-hosted'
       run: ./workflow-scripts/free_disk_space.sh
 
     - name: Setup Linux Requirements
+      if: runner.environment == 'github-hosted' # for GitHub hosted runners and 'self-hosted'
       uses: ./.github/actions/setup-devenv
 
     - name: Set GITHUB_ENV
       run: |
-        echo "TZ=Europe/Paris" >>$GITHUB_ENV
+        echo "TZ=America/New_York" >>$GITHUB_ENV
         echo "BUILD_STRING=${{ needs.init.outputs.build_string }}" >> $GITHUB_ENV
         echo "RELTAG=${{ needs.init.outputs.release_tag }}" >> $GITHUB_ENV
         echo "OPENWRT_BRANCH=${{ github.event.inputs.openwrt_branch }}" >> $GITHUB_ENV
@@ -151,7 +156,7 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
     
-    - name: Load AO seed (mini)
+    - name: Load NK seed (mini)
       if: github.event.inputs.build_mini == 'true'
       run: ./openwrt-$OPENWRT_BRANCH/steps/06-create_config_from_seed.sh $NANOPI_MODEL mini
 
@@ -180,7 +185,7 @@ jobs:
       if: github.event.inputs.build_mini == 'true'
       run: ./openwrt-$OPENWRT_BRANCH/steps/organize_files.sh $NANOPI_MODEL mini $OPENWRT_BRANCH $RELTAG
     
-    - name: Load AO seed (full)
+    - name: Load NK seed (full)
       if: github.event.inputs.build_full == 'true'
       run: ./openwrt-$OPENWRT_BRANCH/steps/06-create_config_from_seed.sh $NANOPI_MODEL full
 
@@ -216,9 +221,9 @@ jobs:
       with:
         name: OpenWrt ${{ env.OPENWRT_BRANCH }} ${{ env.BUILD_STRING }} 
         allowUpdates: true
-        tag: OpenWrtAO-${{ env.OPENWRT_BRANCH }}-${{ env.RELTAG }}
+        tag: OpenWrtNK-${{ env.OPENWRT_BRANCH }}-${{ env.RELTAG }}
         commit: main
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
         bodyFile: "openwrt-${{ env.OPENWRT_BRANCH }}/release-info.md"
-        artifacts: ./artifact/*.img.gz
+        artifacts: ./artifact/*.img.gz, ./artifact/*.bom.cdx.json, ./artifact/*.manifest
