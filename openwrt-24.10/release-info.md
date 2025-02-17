@@ -5,12 +5,12 @@
 
 ### Notes
 - R4S is over-clocked to 2.0GHz on a72 cores and 1.6GHz on a53 cores.
+- Includes patches for PHY PCIe init issues
 - CycloneDX SBOM and full manifest is included in each release
 - All kmods included in each release
 
 ### Configuration
 - OpenWRT 24.10 Vanilla / Kernel 6.6
-- ImmortalWRT patches for Rockchip target NanoPi R4S support (rk3399)
 - Some network optimizations for reduced CPU usage
 - Load balancing: eth0 and eth1 interrupts on a72 cores; RX queues spread across all four a53 cores
 - 1024MB rootfs partition size
@@ -23,3 +23,4 @@
 
 ### Changelog
 - [2025-02-06] Initial OpenWrt 24.10.0
+- [2025-02-17] Add patches for PHY PCIe init issues
