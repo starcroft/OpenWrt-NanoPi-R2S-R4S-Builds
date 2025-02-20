@@ -9,9 +9,9 @@ Automated builds of OpenWrt for FriendlyARM NanoPi R4S boards
 
 [Download 24.10 Releases](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/releases?q=OpenWrtNK-24.10&expanded=true) [Changelog](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/blob/main/openwrt-24.10/release-info.md)
 
-[Download Vanilla 24.10 Releases](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/releases?q=Vanilla-OpenWrtNK-100MB-24.10&expanded=true) [Changelog](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/blob/main/openwrt-24.10/release-info.md)
+[Download Vanilla 24.10 100MB rootfs Releases](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/releases?q=Vanilla-OpenWrtNK-100MB-24.10&expanded=true) [Changelog](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/blob/main/openwrt-24.10/release-info.md)
 
-[Download Vanilla 100MB 24.10 Releases](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/releases?q=Vanilla-OpenWrtNK-100MB-24.10&expanded=true) [Changelog](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/blob/main/openwrt-24.10/release-info.md)
+[Download Vanilla 24.10 1024MB rootfs Releases](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/releases?q=Vanilla-OpenWrtNK-1024MB-24.10&expanded=true) [Changelog](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/blob/main/openwrt-24.10/release-info.md)
 
 Supported Models : R4S (4Gb)
 
