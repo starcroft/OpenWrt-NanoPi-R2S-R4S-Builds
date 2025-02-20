@@ -8,6 +8,10 @@ Automated builds of OpenWrt for FriendlyARM NanoPi R4S boards
 ## OpenWrt 24.10.0 (experimental)
 
 [Download 24.10 Releases](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/releases?q=OpenWrtNK-24.10&expanded=true) [Changelog](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/blob/main/openwrt-24.10/release-info.md)
+
+[Download 24.10 Releases](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/releases?q=Vanilla-OpenWrtNK-24.10&expanded=true) [Changelog](https://github.com/stargazindreamr/OpenWrt-NanoPi-R2S-R4S-Builds/blob/main/openwrt-24.10/release-info.md)
+
+
 Supported Models : R4S (4Gb)
 
 ⚠ Warning: No support / Use at your own risk  ⚠ 
