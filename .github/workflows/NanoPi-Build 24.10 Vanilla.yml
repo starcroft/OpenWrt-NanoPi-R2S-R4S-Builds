@@ -2,7 +2,7 @@
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
 
-name: NanoPi Build 24.10
+name: NanoPi Build 24.10 Vanilla
 
 on:
 #  release:
