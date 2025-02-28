@@ -69,10 +69,8 @@ jobs:
     - id: build_matrix
       run: |
           model_R4S="${{ fromJSON('["", "R4S"]')[github.event.inputs.model_R4S == 'true'] }}"
-          model_R2S="${{ fromJSON('["", "R2S"]')[github.event.inputs.model_R2S == 'true'] }}"
-          model_R2C="${{ fromJSON('["", "R2C"]')[github.event.inputs.model_R2C == 'true'] }}"
-          models="$model_R4S $model_R2S $model_R2C"
-          modelsJson=$(echo -n "$models" | jq -R -s -c 'split(" ") | map(select(length>0))')
+          models="$model_R4S"
+          modelsJson=$(echo -n "$models")
           matrix="{\"nanopi_model\":$modelsJson}"
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
   
